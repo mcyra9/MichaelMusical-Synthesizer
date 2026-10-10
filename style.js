@@ -11,7 +11,7 @@ function changeTheme() {
     }
     if (Math.random() < 0.6) {
         //remove the changes done by randomiseTheme so it does not interfere with the stylesheet
-        resetTheme();
+        resetTheme(false);
 
         switch (Math.floor(Math.random() * 5)) {
             case 0:
@@ -33,13 +33,14 @@ function changeTheme() {
         link.href = sheet;
         console.log("randomly chosen pre-written theme: " + sheet);
     } else {
+        resetTheme();
         link.href = "styles/nostyles.css";
         randomiseTheme();
         console.log("theme generated, cohesion:", cohesion);
     }
 }
 
-function resetTheme() {
+function resetTheme(sizeControl = true) {
             const control = document.getElementById("controls");
             control.style = "border: 1px solid black; padding: 10px; width: fit-content;";
             //create list of elements to reset
@@ -47,6 +48,16 @@ function resetTheme() {
             elementsToReset.forEach(element => {
                 element.style = "";
             });
+            
+            //add back some default basic formating
+            const Inputs = document.querySelectorAll("#controls input[type='text'], #controls input[type='number']");
+            //disables controling size if it will interfer with css
+            if (sizeControl) {
+                Inputs.forEach(input => {
+                    input.style.width = "60px";
+                });
+            }
+            document.getElementById("saveButton").style = "display: none;"
 }
 
 //set the style of all components of the controls
@@ -114,4 +125,3 @@ function randomiseTheme () {
         select.style.padding = `${Math.floor(Math.random() * 5) + 1}px ${Math.floor(Math.random() * 10) + 1}px`;
     });
 }
-
