@@ -1,0 +1,146 @@
+keys.js
+
+let Q;
+let Qpressed = false;
+let W;
+let Wpressed = false;
+let E;
+let Epressed = false;
+let R;
+let Rpressed = false;
+let T;
+let Tpressed = false;
+let Y;
+let Ypressed = false;
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === "q") {
+        if (Qpressed) {return;}
+        Qpressed = true;
+        Q = giveTone("sine", 100, 0.5);
+        Q.oscillator.start();
+    }
+    if (event.key === "w") {
+        if (Wpressed) {return;}
+        Wpressed = true;
+        W = giveTone("sine", 200, 0.5);
+        W.oscillator.start();
+    }
+    if (event.key === "e") {
+        if (Epressed) {return;}
+        Epressed = true;
+        E = giveTone("sine", 300, 0.5);
+        E.oscillator.start();
+    }
+    if (event.key === "r") {
+        if (Rpressed) {return;}
+        Rpressed = true;
+        R = giveTone("sine", 400, 0.5);
+        R.oscillator.start();
+    }
+    if (event.key === "t") {
+        if (Tpressed) {return;}
+        Tpressed = true;
+        T = giveTone("sine", 500, 0.5);
+        T.oscillator.start();
+    }
+    if (event.key === "y") {
+        if (Ypressed) {return;}
+        Ypressed = true;
+        Y = giveTone("sine", 600, 0.5);
+        Y.oscillator.start();
+    }
+});
+
+//plan to make this more efficient by using a dictionary to map keys to their corresponding tones and states, reducing repetitive code.
+const keyMap = {
+    "q": { tone: 100, pressed: false, oscillator: null },
+    "w": { tone: 200, pressed: false, oscillator: null },
+    "e": { tone: 300, pressed: false, oscillator: null },
+    "r": { tone: 400, pressed: false, oscillator: null },
+    "t": { tone: 500, pressed: false, oscillator: null },
+    "y": { tone: 600, pressed: false, oscillator: null }
+};
+
+
+document.addEventListener('keyup', function(event) {
+    const keyData = keyMap[event.key];
+    if (keyData) {
+        keyData.pressed = false;
+        if (keyData.oscillator) {
+            keyData.oscillator.stop();
+            keyData.oscillator = null;
+            }
+        }
+    });
+        //stop the oscillator
+        W.oscillator.stop();
+        W = null;
+    }
+    if (event.key === "e") {
+        Epressed = false;
+        //stop the oscillator
+        E.oscillator.stop();
+        E = null;
+    }
+    if (event.key === "r") {
+        Rpressed = false;
+        //stop the oscillator
+        R.oscillator.stop();
+        R = null;
+    }
+    if (event.key === "t") {
+        Tpressed = false;
+        //stop the oscillator
+        T.oscillator.stop();
+        T = null;
+    }
+    if (event.key === "y") {
+        Ypressed = false;
+        //stop the oscillator
+        Y.oscillator.stop();
+        Y = null;
+    }
+});
+
+//keys.js broken
+
+let Q;
+let Qpressed = false;
+let W;
+let Wpressed = false;
+let E;
+let Epressed = false;
+let R;
+let Rpressed = false;
+let T;
+let Tpressed = false;
+let Y;
+let Ypressed = false;
+
+//plan to make this more efficient by using a dictionary to map keys to their corresponding tones and states, reducing repetitive code.
+const keyMap = {
+    "q": 
+
+document.addEventListener('keydown', function(event) {
+    const keyData = keyMap[event.key];
+    //go through each key in the keyMap and check if the pressed key matches, if so, play the corresponding tone
+    if (keyData) {
+        if (keyData.pressed) {return;}
+        keyData.pressed = true;
+        keyData.tone = giveTone("sine", keyData.tone, 0.5);
+        keyData.tone.oscillator.start();
+    }
+});
+
+
+document.addEventListener('keyup', function(event) {
+    const keyData = keyMap[event.key];
+    if (keyData) {
+        keyData.pressed = false;
+        if (keyData.tone) {
+            keyData.tone.oscillator.stop();
+            keyData.tone.oscillator = null;
+        }
+     }
+});

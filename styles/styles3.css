@@ -1,0 +1,255 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   1. DESIGN TOKENS & GLOBALS
+   ========================================================================== */
+:root {
+    /* Authentic Windows Vista/7/Web 2.0 Palette */
+    --aero-blue-bright: #00a2ff;
+    --aero-blue-deep: #0051a8;
+    --aero-green-glow: #39ff14;
+    --aero-green-eco: #24b61a;
+    --aero-glass-bg: rgba(230, 245, 255, 0.45);
+    --aero-glass-border: rgba(255, 255, 255, 0.7);
+    
+    /* Font Stack: Period-accurate, humanist sans-serifs */
+    --aero-font: "Segoe UI", "Lucida Grande", "Myriad Pro", "Tahoma", "Verdana", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--aero-font);
+    color: #1a2a3a;
+    min-height: 100vh;
+    padding: 30px;
+    /* Aurora/Eco background gradient mimicking Windows Vista wallpapers */
+    background: radial-gradient(circle at 80% 20%, rgba(57, 255, 20, 0.25), transparent 40%),
+                radial-gradient(circle at 20% 80%, rgba(0, 162, 255, 0.3), transparent 50%),
+                linear-gradient(135deg, #bbf2f6 0%, #86e3ce 50%, #68b0ab 100%);
+    background-attachment: fixed;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+/* ==========================================================================
+   2. TYPOGRAPHY & HEADINGS (Clean, Soft-Glow)
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: var(--aero-blue-deep);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-shadow: 0 2px 4px rgba(0, 162, 255, 0.2), 0 0 10px rgba(255, 255, 255, 0.6);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    padding-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #0b6623; /* Eco Green tone */
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    font-size: 1.05rem;
+}
+
+/* Links with distinct early 2000s hover dynamics */
+a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+    color: var(--aero-blue-bright);
+    text-shadow: 0 0 8px rgba(0, 162, 255, 0.5);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   3. LAYOUT & CONTAINERS (The Glass Windows)
+   ========================================================================== */
+main, section, article {
+    background: var(--aero-glass-bg);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border: 1px solid var(--aero-glass-border);
+    border-top: 1px solid rgba(255, 255, 255, 0.9);
+    border-left: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    /* Skeuomorphic inner shine and heavy soft drop shadow */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                0 8px 32px 0 rgba(0, 50, 120, 0.15);
+}
+
+/* Horizontal Rule acting as a 3D glass groove */
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.7), transparent);
+    box-shadow: 0 1px 0 rgba(0, 50, 100, 0.1);
+    margin: 20px 0;
+}
+
+/* ==========================================================================
+   4. INTERACTIVE ELEMENTS (Glossy Buttons & Inputs)
+   ========================================================================== */
+/* The ultimate Aqua/Aero Glossy Button */
+button, input[type="button"], input[type="submit"] {
+    font-family: var(--aero-font);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 20px; /* Pill/rounded look */
+    border: 1px solid #0051a8;
+    cursor: pointer;
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.3);
+    
+    /* Double Gradient/Linear Glare Sweep for Web 2.0 gloss texture */
+    background: linear-gradient(to bottom, 
+                    rgba(255,255,255,0.7) 0%, 
+                    rgba(255,255,255,0.2) 49%, 
+                    rgba(255,255,255,0) 50%, 
+                    rgba(0,0,0,0.1) 100%),
+                linear-gradient(to bottom, #00bfff, #0051a8);
+                
+    box-shadow: inset 0 1px 2px rgba(255,255,255,0.8),
+                0 3px 6px rgba(0,0,0,0.15),
+                0 0 0 1px rgba(255,255,255,0.2);
+    transition: all 0.25s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+
+button:hover, input[type="button"]:hover, input[type="submit"]:hover {
+    /* Transforms into an Eco-Green glow state on hover */
+    border-color: #1c7a12;
+    background: linear-gradient(to bottom, 
+                    rgba(255,255,255,0.8) 0%, 
+                    rgba(255,255,255,0.3) 49%, 
+                    rgba(255,255,255,0) 50%, 
+                    rgba(0,0,0,0.15) 100%),
+                linear-gradient(to bottom, #52ff39, #1c7a12);
+    box-shadow: inset 0 1px 2px rgba(255,255,255,0.9),
+                0 0 12px rgba(57, 255, 20, 0.6);
+}
+
+button:active, input[type="button"]:active, input[type="submit"]:active {
+    /* Pressed inward state */
+    background: linear-gradient(to bottom, #004080, #0077ee);
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+    transform: translateY(1px);
+}
+
+/* Form Controls */
+input[type="text"], input[type="email"], input[type="password"], textarea, select {
+    font-family: var(--aero-font);
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #a0c0d0;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: inset 0 1px 3px rgba(0, 50, 100, 0.1);
+    color: #112233;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--aero-blue-bright);
+    background: #ffffff;
+    /* Soft blue glow reminiscent of Windows Aero focus rings */
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05),
+                0 0 8px rgba(0, 162, 255, 0.5);
+}
+
+/* ==========================================================================
+   5. TABLES & DATA (Sleek Gloss Overlays)
+   ========================================================================== */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 80, 150, 0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+th {
+    color: white;
+    font-weight: 500;
+    padding: 12px;
+    /* Glass header strip mapping */
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%),
+                linear-gradient(to bottom, #4ea1db, #1d6fa5);
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.2);
+    border-bottom: 1px solid #14527b;
+}
+
+td {
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.6);
+    border-bottom: 1px solid rgba(0, 80, 150, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+tr:nth-child(even) td {
+    background: rgba(215, 240, 255, 0.5); /* Alternating light aqua tint */
+}
+
+/* ==========================================================================
+   6. MISCELLANEOUS (Lists, Blockquotes, Images)
+   ========================================================================== */
+ul, ol {
+    padding-left: 25px;
+    margin-bottom: 1.25rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* Glossy list bullet replacement style strategy */
+ul {
+    list-style: none;
+}
+ul li::before {
+    content: "•";
+    color: var(--aero-blue-bright);
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+    text-shadow: 0 0 4px rgba(0, 162, 255, 0.8);
+}
+
+blockquote {
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.3);
+    border-left: 4px solid var(--aero-blue-bright);
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+    box-shadow: inset 2px 0 5px rgba(0,0,0,0.02);
+}
+
+/* Dynamic skeuomorphic frame for media */
+img, video {
+    max-width: 100%;
+    height: auto;
+    border: 4px solid #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 60, 120, 0.2);
+}

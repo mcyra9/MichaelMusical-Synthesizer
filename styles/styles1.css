@@ -1,0 +1,293 @@
+/* 
+ * Windows XP "Luna" (Blue Theme) CSS library
+ * Replicates the classic 2001 Microsoft OS aesthetic for standard HTML elements
+ */
+
+:root {
+  /* Luna Palette */
+  --luna-blue-dark: #1e57c8;
+  --luna-blue-medium: #245edb;
+  --luna-blue-light: #7da2e1;
+  --luna-blue-bg: #ece9d8; /* Classic beige dialogue background */
+  --luna-window-bg: #ffffff;
+  --luna-text-dark: #000000;
+  --luna-text-muted: #555555;
+  
+  /* Accent Colors */
+  --luna-orange-start: #ff9900; /* Start button hover */
+  --luna-green-button: #2ca82c; /* Start button green */
+  --luna-green-hover: #3cb83c;
+  
+  /* Borders & Shadows */
+  --luna-border-dark: #002c9a;
+  --luna-border-light: #ffffff;
+  --luna-input-border: #7f9db9; /* Standard XP input border */
+}
+
+/* --- Global Reset & Base Styling --- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--luna-blue-bg);
+  font-family: "Tahoma", "Segoe UI", -apple-system, sans-serif;
+  font-size: 11pt;
+  color: var(--luna-text-dark);
+  margin: 0;
+  padding: 20px;
+}
+
+/* --- Typography & Headers --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Tahoma", sans-serif;
+  color: #002070;
+  margin-top: 0;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 18pt;
+  border-bottom: 2px solid var(--luna-blue-light);
+  padding-bottom: 4px;
+}
+
+h2 { font-size: 14pt; }
+h3 { font-size: 12pt; }
+
+p {
+  line-height: 1.4;
+  margin: 0 0 12px 0;
+}
+
+a {
+  color: #004eaf;
+  text-decoration: underline;
+}
+a:hover {
+  color: var(--luna-blue-medium);
+}
+
+/* --- Windows Layout Container --- */
+/* Use <main> or <section> as an application/window canvas container */
+main, .xp-window {
+  background-color: var(--luna-window-bg);
+  border: 1px solid var(--luna-border-dark);
+  border-top: none;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+  border-radius: 0 0 5px 5px;
+  padding: 15px;
+  margin-top: 30px; /* Space for the pseudo header bar */
+  position: relative;
+}
+
+/* Window Header Effect (Simulated via header tag) */
+header {
+  background: linear-gradient(to bottom, #0058e6 0%, #004cb3 8%, #0073ea 35%, #0066d6 70%, #175bc2 100%);
+  color: var(--luna-border-light);
+  padding: 6px 10px;
+  font-weight: bold;
+  font-size: 11pt;
+  text-shadow: 1px 1px 1px #002c9a;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border: 1px solid var(--luna-border-dark);
+  border-bottom: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- Interactive Elements: Buttons --- */
+button, 
+input[type="button"], 
+input[type="submit"], 
+input[type="reset"] {
+  font-family: "Tahoma", sans-serif;
+  font-size: 10pt;
+  color: var(--luna-text-dark);
+  background: linear-gradient(to bottom, #fcfcfc 0%, #f4f3ee 40%, #e0ddd2 70%, #d8d4c6 100%);
+  border: 1px solid #003c74;
+  border-radius: 3px;
+  padding: 4px 14px;
+  cursor: pointer;
+  box-shadow: inset 1px 1px 0px #ffffff;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+  background: linear-gradient(to bottom, #fff8dd 0%, #fee498 40%, #f7c765 70%, #f4b43b 100%);
+  border-color: #003c74;
+}
+
+button:active,
+input[type="button"]:active,
+input[type="submit"]:active {
+  background: linear-gradient(to bottom, #dad5c4 0%, #e2ded1 100%);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Special Focus State (XP Orange Inner Ring) */
+button:focus,
+input[type="submit"]:focus {
+  outline: 1px dotted #000000;
+  outline-offset: -3px;
+}
+
+/* --- Form Fields & Inputs --- */
+label {
+  display: inline-block;
+  font-size: 10pt;
+  margin-bottom: 4px;
+  font-weight: normal;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+textarea,
+select {
+  font-family: "Tahoma", sans-serif;
+  font-size: 10pt;
+  background-color: var(--luna-window-bg);
+  color: var(--luna-text-dark);
+  border: 1px solid var(--luna-input-border);
+  padding: 3px 5px;
+  border-radius: 0px; /* Strict 90 degree edges for fields */
+  outline: none;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #1d52bf; /* Darker blue accent focus */
+}
+
+/* Textarea overrides */
+textarea {
+  resize: both;
+  min-height: 80px;
+}
+
+/* Select dropdown specific styling */
+select {
+  padding-right: 18px;
+  background-image: linear-gradient(to bottom, #fcfcfc, #d8d4c6);
+}
+
+/* --- Checkboxes & Radios --- */
+/* Custom styled standard inputs to capture XP colors */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--luna-blue-medium);
+  transform: scale(1.1);
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* --- Tabular Data & Lists --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10pt;
+  margin: 15px 0;
+  background-color: var(--luna-window-bg);
+}
+
+th {
+  background: linear-gradient(to bottom, #fcfcfc 0%, #e0ddd2 100%);
+  border: 1px solid #b0b0b0;
+  color: var(--luna-text-dark);
+  padding: 5px 8px;
+  text-align: left;
+  font-weight: normal;
+  box-shadow: inset 0 1px 0 #fff;
+}
+
+td {
+  border: 1px solid #d4d0c8;
+  padding: 4px 8px;
+}
+
+tr:nth-child(even) td {
+  background-color: #f8f7f2; /* Subtle alternate row */
+}
+
+/* List items */
+ul, ol {
+  margin: 0 0 12px 0;
+  padding-left: 25px;
+}
+
+li {
+  margin-bottom: 4px;
+}
+
+/* Code & Blockquotes */
+code, pre {
+  font-family: "Courier New", monospace;
+  font-size: 10pt;
+  background-color: #f1f0e8;
+  border: 1px solid #d4d0c8;
+}
+
+code {
+  padding: 1px 4px;
+}
+
+pre {
+  padding: 10px;
+  overflow-x: auto;
+  display: block;
+}
+
+blockquote {
+  margin: 10px 0;
+  padding: 5px 15px;
+  border-left: 4px solid var(--luna-blue-light);
+  background-color: #f5f4ed;
+  font-style: italic;
+}
+
+/* --- Fieldsets --- */
+fieldset {
+  border: 1px solid #d4d0c8;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 3px;
+}
+
+legend {
+  font-size: 10pt;
+  color: #002070;
+  font-weight: bold;
+  padding: 0 6px;
+}
+
+/* --- Progress Bar element styling --- */
+progress {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 20px;
+  border: 1px solid #7f9db9;
+  background-color: #fff;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #fff;
+}
+
+progress::-webkit-progress-value {
+  /* The distinct smooth-blocks XP loader effect */
+  background: linear-gradient(to right, 
+    #3cb83c 0%, #3cb83c 80%, 
+    #fff 80%, #fff 100%
+  );
+  background-size: 12px 100%;
+}
