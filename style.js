@@ -120,7 +120,7 @@ function randomiseTheme () {
     controlSelects.forEach(select => {
         select.style.backgroundColor = `rgb(${colour("red")},${colour("green")}, ${colour("blue")})`;
         //get luminance of the background color to determine text color
-        select.style.border = `$1px solid ${colour("null")}`;  
+        select.style.border = `1px solid ${colour("null")}`;  
         select.style.borderRadius = `${borderRadius()}px`;
         select.style.padding = `${Math.floor(Math.random() * 5) + 1}px ${Math.floor(Math.random() * 10) + 1}px`;
     });
